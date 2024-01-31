@@ -96,7 +96,7 @@ while True:
 
     # Display the logo and background image
     bg.blit(BGimage, [0, 0])
-    # bg.blit(LogoImage, imageXY)
+    bg.blit(LogoImage, imageXY)
 
     # NTP warning flag
     counter += 1
@@ -130,7 +130,7 @@ while True:
         )
 
     # Render our digital clock
-    digital_clock = clockfont.render(string_time, True, yellow)
+    digital_clock = clockfont.render(string_time, True, white)
     # Digital clock with a drop shadow
     digital_clock_ds = clockfont.render(string_time, True, black)
     txtposhm = digital_clock.get_rect(centerx=xclockpos, centery=txthmy / 2)
