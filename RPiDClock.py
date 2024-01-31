@@ -74,7 +74,7 @@ ipTxt = ipFont.render(ipAddress, True, ipTxtColor)
 
 # Logo position
 imageXY = LogoImage.get_rect(
-    centerx=xclockpos, centery=ycenter + int(displayHeight * 0.4))
+    centerx=xclockpos, centery=ycenter + int(displayHeight * 0.36))
 
 ######################### Main program loop. ####################################
 
