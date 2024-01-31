@@ -46,6 +46,7 @@ LogoImage = pygame.image.load(config["Image"]["Logo_Image"])
 
 white = (255, 255, 255, 255)
 black = (0, 0, 0, 255)
+yellow = (255, 255, 0, 255)
 
 ipTxtColor = tuple(map(int, config["Color"]["IP_Address_Color"].split(",")))
 NTP_GoodColor = tuple(map(int, config["Color"]["NTP_Good_Color"].split(",")))
@@ -95,7 +96,7 @@ while True:
 
     # Display the logo and background image
     bg.blit(BGimage, [0, 0])
-    bg.blit(LogoImage, imageXY)
+    # bg.blit(LogoImage, imageXY)
 
     # NTP warning flag
     counter += 1
@@ -129,10 +130,10 @@ while True:
         )
 
     # Render our digital clock
-    digital_clock = clockfont.render(string_time, True, white)
+    digital_clock = clockfont.render(string_time, True, yellow)
     # Digital clock with a drop shadow
     digital_clock_ds = clockfont.render(string_time, True, black)
-    txtposhm = digital_clock.get_rect(centerx=xclockpos, centery=txthmy)
+    txtposhm = digital_clock.get_rect(centerx=xclockpos, centery=txthmy / 2)
 
     # Display the normal screen
     # Insert our drop shadow first
@@ -144,6 +145,6 @@ while True:
 
     # # This sets the frame rate
     clock.tick(30)
-    print(clock.get_fps())
+    # print(clock.get_fps())
 
     
