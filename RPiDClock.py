@@ -44,13 +44,11 @@ pygame.mouse.set_visible(False)
 BGimage = pygame.image.load(config["Image"]["Background_Image"])
 LogoImage = pygame.image.load(config["Image"]["Logo_Image"])
 
-white = (255, 255, 255, 255)
-black = (0, 0, 0, 255)
-yellow = (255, 255, 0, 255)
-
 ipTxtColor = tuple(map(int, config["Color"]["IP_Address_Color"].split(",")))
 NTP_GoodColor = tuple(map(int, config["Color"]["NTP_Good_Color"].split(",")))
 NTP_BadColor = tuple(map(int, config["Color"]["NTP_Bad_Color"].split(",")))
+DigitalClockColor = tuple(map(int, config["Color"]["Clock_Color"].split(",")))
+black = (0, 0, 0, 255)
 
 # Scaling to the right size for the clock display
 displayHeight = bg.get_height()
@@ -124,7 +122,7 @@ while True:
         )
 
     # Render our digital clock
-    digital_clock = clockfont.render(string_time, True, white)
+    digital_clock = clockfont.render(string_time, True, DigitalClockColor)
     # Digital clock with a drop shadow
     digital_clock_ds = clockfont.render(string_time, True, black)
     txtposhm = digital_clock.get_rect(centerx=xclockpos, centery=txthmy / 2)
