@@ -7,6 +7,7 @@ import logging
 import datetime
 import pygame.gfxdraw
 
+
 logging.basicConfig(
     level = logging.WARNING,
     filename="RPiDClock.log",
@@ -56,7 +57,6 @@ NTP_BadColor = tuple(map(int, config["Color"]["NTP_Bad_Color"].split(",")))
 displayHeight = bg.get_height()
 displayWidth = bg.get_width()
 digiclocksize = int(displayHeight / 1.6)
-#digiclocksize = int(displayHeight / 5)
 dotsize = int(displayHeight / 90)
 
 # Coordinates of items on display
@@ -68,7 +68,7 @@ txthmy = int(ycenter)
 
 # Fonts
 clockfont = pygame.font.SysFont(None, digiclocksize)
-ipFont = pygame.font.Font(None, 30)
+ipFont = pygame.font.SysFont(None, 30)
 
 ipTxt = ipFont.render(ipAddress, True, ipTxtColor)
 
@@ -84,19 +84,14 @@ while True:
     pygame.display.update()
 
     current_time = datetime.datetime.now()
-    float_seconds = float(current_time.strftime("%S.%f"))
-    int_seconds = int(current_time.strftime("%S"))
-    int_minutes = int(current_time.strftime("%M"))
-    int_hours = int(current_time.strftime("%I"))
     string_time = current_time.strftime("%I:%M:%S")
-    secdeg = (int_seconds + 1) * 6
-    secondAngle = float_seconds * 6
-    minuteAngle = int_minutes * 6 + int_seconds / 10
-    hourAngle = int_hours * 30 + int_minutes / 2
 
     # Display the logo and background image
     bg.blit(BGimage, [0, 0])
     bg.blit(LogoImage, imageXY)
+
+    # Display IP address
+    bg.blit(ipTxt, ipTxt.get_rect())
 
     # NTP warning flag
     counter += 1
@@ -137,14 +132,11 @@ while True:
 
     # Display the normal screen
     # Insert our drop shadow first
-    bg.blit(digital_clock_ds, txtposhm.move(+2, +2))
+    bg.blit(digital_clock_ds, txtposhm.move(+4, +4))
     bg.blit(digital_clock, txtposhm)  # Now add the digital clock
 
-    # Display IP address
-    bg.blit(ipTxt, ipTxt.get_rect())
-
     # # This sets the frame rate
-    clock.tick(30)
+    clock.tick(15)
     # print(clock.get_fps())
 
     
