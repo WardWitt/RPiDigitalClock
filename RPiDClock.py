@@ -7,7 +7,6 @@ import logging
 import datetime
 import pygame.gfxdraw
 
-
 logging.basicConfig(
     level = logging.WARNING,
     filename="RPiDClock.log",
@@ -138,5 +137,3 @@ while True:
     # # This sets the frame rate
     clock.tick(15)
     # print(clock.get_fps())
-
-    
