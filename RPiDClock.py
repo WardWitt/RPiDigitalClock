@@ -95,7 +95,8 @@ while True:
     if counter == 1800:
         chronyc = os.popen("chronyc -c tracking").read().split(",")
         lastTimeUpdate = time.time() - float(chronyc[3])
-        if lastTimeUpdate < 4000:
+        print(lastTimeUpdate)
+        if lastTimeUpdate < 10000:
             timeStatus = True
             logging.info("Last valad time update %f seconds ago",
                          lastTimeUpdate)
@@ -129,7 +130,7 @@ while True:
 
     # Display the normal screen
     # Insert our drop shadow first
-    bg.blit(digital_clock_ds, txtposhm.move(+4, +4))
+    bg.blit(digital_clock_ds, txtposhm.move(+ 4, + 4))
     bg.blit(digital_clock, txtposhm)  # Now add the digital clock
 
     # # This sets the frame rate
