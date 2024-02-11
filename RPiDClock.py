@@ -30,6 +30,7 @@ counter = 0
 logging.warning("Start RPiclock")
 pygame.display.init()
 pygame.font.init()
+pygame.event.set_allowed(None)
 
 # Figure out our IP Address
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -41,8 +42,8 @@ bg = pygame.display.set_mode(
     tuple(map(int, config["Display"]["Resolution"].split(",")))
 )
 pygame.mouse.set_visible(False)
-BGimage = pygame.image.load(config["Image"]["Background_Image"])
-LogoImage = pygame.image.load(config["Image"]["Logo_Image"])
+BGimage = pygame.image.load(config["Image"]["Background_Image"]).convert()
+LogoImage = pygame.image.load(config["Image"]["Logo_Image"]).convert()
 
 ipTxtColor = tuple(map(int, config["Color"]["IP_Address_Color"].split(",")))
 NTP_GoodColor = tuple(map(int, config["Color"]["NTP_Good_Color"].split(",")))
